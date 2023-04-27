@@ -128,9 +128,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/logindb","root", "");
-        } catch(ClassNotFoundException ex){
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(SQLException ex){
+        } catch(ClassNotFoundException | SQLException ex){
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -443,7 +441,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
 
         jLabel9.setText("Course:");
 
-        jLabel10.setText("Section:");
+        jLabel10.setText("Year & Section:");
 
         jButton5.setText("Clear");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -614,7 +612,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Number:", "ID Number:", "First Name:", "Last Name:", "Log Date:", "Time:", "Course:", "Section:"
+                "Number:", "ID Number:", "First Name:", "Last Name:", "Log Date:", "Time:", "Course:", "Year & Section:"
             }
         ));
         jScrollPane1.setViewportView(TimeTable);
@@ -756,7 +754,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Number:", "ID Number:", "First Name:", "Last Name:", "Log Date:", "Time:", "Course:", "Section:"
+                "Number:", "ID Number:", "First Name:", "Last Name:", "Log Date:", "Time:", "Course:", "Year & Section:"
             }
         ));
         jScrollPane2.setViewportView(TimeTable2);
@@ -822,7 +820,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID Number:", "First Name:", "Last Name:", "Course:", "Section:"
+                "ID Number:", "First Name:", "Last Name:", "Course:", "Year & Section:"
             }
         ));
         jScrollPane3.setViewportView(StudentRegistered);
@@ -920,9 +918,9 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         String IDnum = this.txtidnumber.getText();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/logindb","root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logindb","root", "");
             String sql = "INSERT INTO studenttable VALUE(?,?,?,?,?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, Integer.parseInt( txtidnumber.getText()));
             pstmt.setString(2, txtfirstname.getText());
             pstmt.setString(3, txtlastname.getText());
@@ -930,7 +928,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
             pstmt.setString(5, txtsection.getText());
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "insertion successful");
-            conn.close();
+            con.close();
             String filepath = "C:\\Users\\crew laptop\\Documents\\NetBeansProjects\\AMSQRCODE\\Pictures\\QRCode\\qr.png";
             String charset = "UTF-8";
             Map <EncodeHintType,ErrorCorrectionLevel> hintMap= new HashMap<EncodeHintType,ErrorCorrectionLevel>();

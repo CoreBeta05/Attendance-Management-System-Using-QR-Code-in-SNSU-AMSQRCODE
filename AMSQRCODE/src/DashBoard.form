@@ -324,7 +324,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Section:"/>
+                <Property name="text" type="java.lang.String" value="Year &amp; Section:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
@@ -588,7 +588,7 @@
                         <Column editable="true" title="Log Date:" type="java.lang.Object"/>
                         <Column editable="true" title="Time:" type="java.lang.Object"/>
                         <Column editable="true" title="Course:" type="java.lang.Object"/>
-                        <Column editable="true" title="Section:" type="java.lang.Object"/>
+                        <Column editable="true" title="Year &amp; Section:" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -770,7 +770,7 @@
                         <Column editable="true" title="Log Date:" type="java.lang.Object"/>
                         <Column editable="true" title="Time:" type="java.lang.Object"/>
                         <Column editable="true" title="Course:" type="java.lang.Object"/>
-                        <Column editable="true" title="Section:" type="java.lang.Object"/>
+                        <Column editable="true" title="Year &amp; Section:" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -857,7 +857,7 @@
                         <Column editable="true" title="First Name:" type="java.lang.Object"/>
                         <Column editable="true" title="Last Name:" type="java.lang.Object"/>
                         <Column editable="true" title="Course:" type="java.lang.Object"/>
-                        <Column editable="true" title="Section:" type="java.lang.Object"/>
+                        <Column editable="true" title="Year &amp; Section:" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

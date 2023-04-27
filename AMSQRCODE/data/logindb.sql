@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2023 at 01:46 AM
+-- Generation Time: Apr 27, 2023 at 03:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -28,7 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admintable` (
-  `ID` int(11) NOT NULL,
+  `firstname` varchar(250) NOT NULL,
+  `lastname` varchar(250) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -37,8 +38,23 @@ CREATE TABLE `admintable` (
 -- Dumping data for table `admintable`
 --
 
-INSERT INTO `admintable` (`ID`, `username`, `password`) VALUES
-(1, 'admin', 'admin123');
+INSERT INTO `admintable` (`firstname`, `lastname`, `username`, `password`) VALUES
+('Engineer1', 'Dummy', 'Eg1Dum1', 'Dummy1'),
+('Engineer1', 'Dummy', 'Eg1Dum2', 'Dummy2'),
+('Engineer1', 'Dummy', 'Eg1Dum3', 'Dummy3'),
+('Engineer2', 'Dummy', 'Eg2Dum1', 'Dummy1'),
+('Engineer2', 'Dummy', 'Eg2Dum2 ', 'Dummy2'),
+('Engineer2', 'Dummy', 'Eg2Dum3', 'Dummy3'),
+('Engineer3', 'Dummy', 'Eg3Dum1', 'Dummy1'),
+('Engineer3', 'Dummy', 'Eg3Dum2', 'Dummy2'),
+('Engineer3', 'Dummy', 'Eg3Dum3', 'Dummy3'),
+('Engineer4', 'Duimmy', 'Eg4Dum2', 'Dummy2'),
+('Engineer4', 'Dummy', 'Eg4Dum1', 'Dummy1'),
+('Engineer4', 'Dummy', 'Eg4Dum3', 'Dummy3'),
+('Engineer5', 'Dummy', 'Eg5Dum1', 'Dummy1'),
+('Engineer5', 'Dummy', 'Eg5Dum2', 'Dummy2'),
+('Engineer5', 'Dummy', 'Eg5Dum3', 'Dummy3'),
+('Prince Bert', 'Corbeta', 'admin', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -76,17 +92,13 @@ INSERT INTO `studenttable` (`IDNumber`, `FirstName`, `LastName`, `Course`, `Sect
 (202300002, 'Jimboy', 'Manliguez', 'BSCS', '3A'),
 (202300003, 'Prince', 'Corbeta', 'BSCS', '3A'),
 (202300004, 'Reyjewel', 'Tampus', 'BSCS', '3A'),
-(202300005, 'Rieliana', 'Villamor', 'BSCS', '3A');
+(202300005, 'Rieliana', 'Villamor', 'BSCS', '3A'),
+(202300006, 'Classmate1', 'Classmate1', 'BSCS', '3A'),
+(202300007, 'Classmate2', 'Classmate2', 'BSCS', '3A');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admintable`
---
-ALTER TABLE `admintable`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `attendancetimetable`
@@ -105,16 +117,10 @@ ALTER TABLE `studenttable`
 --
 
 --
--- AUTO_INCREMENT for table `admintable`
---
-ALTER TABLE `admintable`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `attendancetimetable`
 --
 ALTER TABLE `attendancetimetable`
-  MODIFY `Num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Num` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `studenttable`
