@@ -68,7 +68,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
     }
     //Update table when deleted
     private void updateTable(){
-        String sql = "SELECT * FROM attendancetimetable";
+        String sql = "SELECT * FROM logindb.attendancetimetable";
         try{
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -85,7 +85,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
     }
     
         private void updateTable2(){
-        String sql = "SELECT * FROM attendancetimetable";
+        String sql = "SELECT * FROM logindb.attendancetimetable";
         try{
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -103,7 +103,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
     }
         
         private void updateTable3(){
-        String sql = "SELECT * FROM studenttable";
+        String sql = "SELECT * FROM logindb.studenttable";
         try{
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -127,7 +127,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
     public void Connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/logindb","root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root", "root");
         } catch(ClassNotFoundException | SQLException ex){
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -137,7 +137,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         try {
             int q;
             
-            pst = con.prepareStatement("SELECT * FROM attendancetimetable a INNER JOIN studenttable e ON a.IDNumber = e.IDNumber");
+            pst = con.prepareStatement("SELECT * FROM logindb.attendancetimetable a INNER JOIN logindb.studenttable e ON a.IDNumber = e.IDNumber");
             rs = pst.executeQuery();
             
             ResultSetMetaData rss = rs.getMetaData();
@@ -171,7 +171,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         try {
             int q;
             
-            pst = con.prepareStatement("SELECT * FROM attendancetimetable a INNER JOIN studenttable e ON a.IDNumber = e.IDNumber");
+            pst = con.prepareStatement("SELECT * FROM logindb.attendancetimetable a INNER JOIN logindb.studenttable e ON a.IDNumber = e.IDNumber");
             rs = pst.executeQuery();
             
             ResultSetMetaData rss = rs.getMetaData();
@@ -204,7 +204,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         public void StudentRegistered(){
         try {
             int q;
-            pst = con.prepareStatement("SELECT * FROM studenttable");
+            pst = con.prepareStatement("SELECT * FROM logindb.studenttable");
             rs = pst.executeQuery();
             
             ResultSetMetaData rss = rs.getMetaData();
@@ -918,8 +918,8 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         String IDnum = this.txtidnumber.getText();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logindb","root", "");
-            String sql = "INSERT INTO studenttable VALUE(?,?,?,?,?)";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root", "root");
+            String sql = "INSERT INTO logindb.studenttable VALUE(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, Integer.parseInt( txtidnumber.getText()));
             pstmt.setString(2, txtfirstname.getText());
@@ -929,7 +929,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "insertion successful");
             con.close();
-            String filepath = "C:\\Users\\crew laptop\\Documents\\NetBeansProjects\\AMSQRCODE\\Pictures\\QRCode\\qr.png";
+            String filepath = "C:\\Users\\Prince\\Documents\\JavaProject\\Attendance-Management-System-Using-QR-Code-in-SNSU-AMSQRCODE\\AMSQRCODE\\Pictures\\QRCode\\qr.png";
             String charset = "UTF-8";
             Map <EncodeHintType,ErrorCorrectionLevel> hintMap= new HashMap<EncodeHintType,ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION,ErrorCorrectionLevel.L);
@@ -940,7 +940,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
             System.out.println("Qr code has been generated at the location "+filepath);
 
             JFrame frame = new JFrame();
-            ImageIcon icon = new ImageIcon("C:\\Users\\crew laptop\\Documents\\NetBeansProjects\\AMSQRCODE\\Pictures\\QRCode\\qr.png");
+            ImageIcon icon = new ImageIcon("C:\\Users\\Prince\\Documents\\JavaProject\\Attendance-Management-System-Using-QR-Code-in-SNSU-AMSQRCODE\\AMSQRCODE\\Pictures\\QRCode\\qr.png");
             JLabel label = new JLabel(icon);
             frame.add(label);
             frame.setDefaultCloseOperation
@@ -1001,7 +1001,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         String cell = TimeTable.getModel().getValueAt(row, 0).toString();
         int row2 = TimeTable2.getSelectedRow();
         String cell2 = TimeTable2.getModel().getValueAt(row, 0).toString();
-        String sql = "DELETE FROM attendancetimetable where Num="+cell;
+        String sql = "DELETE FROM logindb.attendancetimetable where Num="+cell;
         try{
             pst = con.prepareStatement(sql);
             pst.execute();
@@ -1012,7 +1012,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         }
 
         
-        String sql2 = "DELETE FROM attendancetimetable where Num="+cell;
+        String sql2 = "DELETE FROM logindb.attendancetimetable where Num="+cell;
         try{
             pst = con.prepareStatement(sql);
             pst.execute();
@@ -1027,7 +1027,7 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
         // TODO add your handling code here:
         int row = StudentRegistered.getSelectedRow();
         String cell = StudentRegistered.getModel().getValueAt(row, 0).toString();
-        String sql = "DELETE FROM studenttable where IDNumber="+cell;
+        String sql = "DELETE FROM logindb.studenttable where IDNumber="+cell;
         try{
             pst = con.prepareStatement(sql);
             pst.execute();
@@ -1089,12 +1089,12 @@ public class DashBoard extends javax.swing.JFrame implements Runnable,ThreadFact
                     
                     qrcoderesult.setText(result.getText());
                     
-                    pst = con.prepareStatement("SELECT * FROM studenttable WHERE IDNumber = ?");
+                    pst = con.prepareStatement("SELECT * FROM logindb.studenttable WHERE IDNumber = ?");
                     pst.setInt(1, Integer.parseInt( qrcoderesult.getText()));
                     rs = pst.executeQuery();
                     
                     if(rs.next()==true){
-                        pst = con.prepareStatement("INSERT INTO attendancetimetable (IDNumber, LogDate, Time) VALUES(?,?,?)");
+                        pst = con.prepareStatement("INSERT INTO logindb.attendancetimetable (IDNumber, LogDate, Time) VALUES(?,?,?)");
                         pst.setInt(1, Integer.parseInt( qrcoderesult.getText()));
                         pst.setDate(2, sqldate);
                         pst.setTimestamp(3, sqltime);
